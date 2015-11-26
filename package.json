@@ -1,0 +1,30 @@
+{
+  "name": "tvplus",
+  "version": "0.1.0",
+  "author": {
+    "name": "egg",
+    "email": "i@egg.pe.kr"
+  },
+  "description": "Samsung TV Plus for Node.js.",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/egg-/tvplus.git"
+  },
+  "keywords": [
+    "samsung",
+    "tvplus"
+  ],
+  "license": "MIT",
+  "main": "./index",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-jsdoc-to-markdown": "^1.1.1",
+    "grunt-nodemon": "^0.4.0",
+    "matchdep": "^1.0.0"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "request": "^2.67.0"
+  }
+}
