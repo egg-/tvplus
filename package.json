@@ -1,6 +1,6 @@
 {
   "name": "tvplus",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "egg",
     "email": "i@egg.pe.kr"
@@ -18,13 +18,13 @@
   "license": "MIT",
   "main": "./index",
   "devDependencies": {
+    "lodash": "^3.10.1",
     "grunt": "^0.4.5",
     "grunt-jsdoc-to-markdown": "^1.1.1",
     "grunt-nodemon": "^0.4.0",
     "matchdep": "^1.0.0"
   },
   "dependencies": {
-    "lodash": "^3.10.1",
     "request": "^2.67.0"
   }
 }
