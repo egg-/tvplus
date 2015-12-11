@@ -143,10 +143,14 @@ Content APIs
     * [.loadPrograms(opts, cb)](#Content+loadPrograms)
     * [.loadSeries(opts, cb)](#Content+loadSeries)
     * [.loadGroups(opts, cb)](#Content+loadGroups)
+    * [.loadSchedules(opts, cb)](#Content+loadSchedules)
     * [.updateRequest(type, items, opts, cb)](#Content+updateRequest)
     * [.updatePrograms(items, opts, cb)](#Content+updatePrograms)
     * [.updateSeries(items, opts, cb)](#Content+updateSeries)
     * [.updateGroups(items, opts, cb)](#Content+updateGroups)
+    * [.updateSchedules(items, opts, cb)](#Content+updateSchedules)
+    * [.deleteRequest(type, items, opts, cb)](#Content+deleteRequest)
+    * [.deleteSchedules(items, opts, cb)](#Content+deleteSchedules)
   * _inner_
     * [~LOAD_OPTIONS](#Content..LOAD_OPTIONS) : <code>object</code>
     * [~UPDATE_OPTIONS](#Content..UPDATE_OPTIONS) : <code>object</code>
@@ -177,7 +181,7 @@ execute load request
 
 | Param | Type | Description |
 | --- | --- | --- |
-| type | <code>[TYPES](#Content..TYPES)</code> | `program`, `series`, `groups` |
+| type | <code>[TYPES](#Content..TYPES)</code> | `program`, `series`, `groups`, `schedule` |
 | opts | <code>[LOAD_OPTIONS](#Content..LOAD_OPTIONS)</code> |  |
 | cb | <code>function</code> | cb(err, data) |
 
@@ -238,6 +242,23 @@ content.loadGroups({ page: 1, limit: 5, country: 'KR' }, function (err, data) {
    console.log(err, _.pluck(data.items, 'series_id'))
  })
 ```
+<a name="Content+loadSchedules"></a>
+### content.loadSchedules(opts, cb)
+load schedules
+
+**Kind**: instance method of <code>[Content](#Content)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| opts | <code>[LOAD_OPTIONS](#Content..LOAD_OPTIONS)</code> |  |
+| cb | <code>function</code> | cb(err, data) |
+
+**Example**  
+```js
+content.loadSchedules({ starttime: '2015-12-11T00:56:19+09:00', endtime: '2015-12-11T00:56:19+09:00', country: 'KR' }, function (err, data) {
+   console.log(err, _.pluck(data.items, 'schedule_id'))
+ })
+```
 <a name="Content+updateRequest"></a>
 ### content.updateRequest(type, items, opts, cb)
 execute update request
@@ -246,7 +267,7 @@ execute update request
 
 | Param | Type | Description |
 | --- | --- | --- |
-| type | <code>[TYPES](#Content..TYPES)</code> | `program`, `series`, `groups` |
+| type | <code>[TYPES](#Content..TYPES)</code> | `program`, `series`, `groups`, `schedule` |
 | items | <code>array</code> |  |
 | opts | <code>[UPDATE_OPTIONS](#Content..UPDATE_OPTIONS)</code> |  |
 | cb | <code>function</code> | cb(err, result) |
@@ -323,6 +344,72 @@ content.updateGroups([{
    console.log(err, result)
  })
 ```
+<a name="Content+updateSchedules"></a>
+### content.updateSchedules(items, opts, cb)
+update schedule
+
+**Kind**: instance method of <code>[Content](#Content)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| items | <code>array</code> |  |
+| opts | <code>[UPDATE_OPTIONS](#Content..UPDATE_OPTIONS)</code> |  |
+| opts.service_id | <code>string</code> |  |
+| cb | <code>function</code> | cb(err, result) |
+
+**Example**  
+```js
+content.updateSchedules([{
+   'schedule_id': 'SC000000000025440391'
+   ...
+ }], { service_id: '', country: 'KR' }, function (err, result) {
+   console.log(err, result)
+ })
+```
+<a name="Content+deleteRequest"></a>
+### content.deleteRequest(type, items, opts, cb)
+execute delete request
+
+**Kind**: instance method of <code>[Content](#Content)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| type | <code>[TYPES](#Content..TYPES)</code> | `schedule` |
+| items | <code>array</code> |  |
+| opts | <code>[UPDATE_OPTIONS](#Content..UPDATE_OPTIONS)</code> |  |
+| cb | <code>function</code> | cb(err, result) |
+
+**Example**  
+```js
+content.deleteRequest('program', [{
+   'id': 'pr000000000025440391'
+   ...
+ }], { country: 'KR' }, function (err, result) {
+   console.log(err, result)
+ })
+```
+<a name="Content+deleteSchedules"></a>
+### content.deleteSchedules(items, opts, cb)
+update schedule
+
+**Kind**: instance method of <code>[Content](#Content)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| items | <code>array</code> |  |
+| opts | <code>[UPDATE_OPTIONS](#Content..UPDATE_OPTIONS)</code> |  |
+| opts.service_id | <code>string</code> |  |
+| cb | <code>function</code> | cb(err, result) |
+
+**Example**  
+```js
+content.deleteSchedules([{
+   'schedule_id': 'SC000000000025440391'
+   ...
+ }], { service_id: '', country: 'KR' }, function (err, result) {
+   console.log(err, result)
+ })
+```
 <a name="Content..LOAD_OPTIONS"></a>
 ### Content~LOAD_OPTIONS : <code>object</code>
 **Kind**: inner typedef of <code>[Content](#Content)</code>  
@@ -334,6 +421,8 @@ content.updateGroups([{
 | provider_id | <code>string</code> | optional. default api.getKeys().provider_id |
 | page | <code>number</code> | optional. default 1 |
 | limit | <code>number</code> | optional. default 10 |
+| starttime | <code>number</code> | optional. for schedule ex) 2015-12-11T00:56:19+09:00 |
+| endtime | <code>number</code> | optional. for schedule ex) 2015-12-11T00:56:19+09:00 |
 
 <a name="Content..UPDATE_OPTIONS"></a>
 ### Content~UPDATE_OPTIONS : <code>object</code>
