@@ -36,6 +36,12 @@ content.loadGroups({}, function (err, data) {
   dump(err, data, tvplus.Content.KEYS.GROUPS)
 })
 
+content.loadIntiles({
+  service_id: config.service_id
+}, function (err, data) {
+  dump(err, data, tvplus.Content.KEYS.INTILE)
+})
+
 content.loadSchedules({
   service_id: config.service_id,
   starttime: '2015-01-01T00:00:00+09:00',
@@ -53,6 +59,13 @@ content.updateSeries(dummy.series, {}, function (err, result) {
 })
 
 content.updateGroups(dummy.groups, { country: api.getCountry() }, function (err, result) {
+  console.log(err, result)
+})
+
+content.updateIntiles(dummy.intile, {
+  country: api.getCountry(),
+  service_id: config.service_id
+}, function (err, result) {
   console.log(err, result)
 })
 

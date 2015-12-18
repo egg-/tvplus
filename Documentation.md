@@ -143,11 +143,13 @@ Content APIs
     * [.loadPrograms(opts, cb)](#Content+loadPrograms)
     * [.loadSeries(opts, cb)](#Content+loadSeries)
     * [.loadGroups(opts, cb)](#Content+loadGroups)
+    * [.loadIntiles(opts, cb)](#Content+loadIntiles)
     * [.loadSchedules(opts, cb)](#Content+loadSchedules)
     * [.updateRequest(type, items, opts, cb)](#Content+updateRequest)
     * [.updatePrograms(items, opts, cb)](#Content+updatePrograms)
     * [.updateSeries(items, opts, cb)](#Content+updateSeries)
     * [.updateGroups(items, opts, cb)](#Content+updateGroups)
+    * [.updateIntiles(items, opts, cb)](#Content+updateIntiles)
     * [.updateSchedules(items, opts, cb)](#Content+updateSchedules)
     * [.deleteRequest(type, items, opts, cb)](#Content+deleteRequest)
     * [.deleteSchedules(items, opts, cb)](#Content+deleteSchedules)
@@ -242,6 +244,17 @@ content.loadGroups({ page: 1, limit: 5, country: 'KR' }, function (err, data) {
    console.log(err, _.pluck(data.items, 'series_id'))
  })
 ```
+<a name="Content+loadIntiles"></a>
+### content.loadIntiles(opts, cb)
+load intile
+
+**Kind**: instance method of <code>[Content](#Content)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| opts | <code>[LOAD_OPTIONS](#Content..LOAD_OPTIONS)</code> |  |
+| cb | <code>function</code> | cb(err, data) |
+
 <a name="Content+loadSchedules"></a>
 ### content.loadSchedules(opts, cb)
 load schedules
@@ -341,6 +354,27 @@ content.updateGroups([{
    'group_id': 'gr000000000025440391'
    ...
  }], { country: 'KR' }, function (err, result) {
+   console.log(err, result)
+ })
+```
+<a name="Content+updateIntiles"></a>
+### content.updateIntiles(items, opts, cb)
+update intile
+
+**Kind**: instance method of <code>[Content](#Content)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| items | <code>array</code> |  |
+| opts | <code>[UPDATE_OPTIONS](#Content..UPDATE_OPTIONS)</code> |  |
+| cb | <code>function</code> | cb(err, result) |
+
+**Example**  
+```js
+content.updateIntile([{
+   'category_id': 'ca000000000025440391'
+   ...
+ }], { country: 'KR', service_id: 'SVID###' }, function (err, result) {
    console.log(err, result)
  })
 ```
