@@ -1,3 +1,7 @@
+# 0.3.1
+
+- fix strictSSL for product server.
+
 # 0.3.0
 
 - add in tile api.
